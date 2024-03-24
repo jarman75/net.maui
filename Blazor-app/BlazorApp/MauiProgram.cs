@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BlazorApp.Data;
+using Microsoft.Extensions.Logging;
 using Radzen;
 
 namespace BlazorApp;
@@ -17,6 +18,8 @@ public static class MauiProgram
 
 		builder.Services.AddMauiBlazorWebView();
         builder.Services.AddRadzenComponents();
+
+		builder.Services.AddSingleton<DataService>();
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();

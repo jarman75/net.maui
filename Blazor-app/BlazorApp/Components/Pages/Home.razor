@@ -3,6 +3,18 @@
 
 <h1>Hello, world!</h1>
 
-<RadzenButton Text="Click me" Click="@(() => NotificationService.Notify(new NotificationMessage{ Detail = "Hello from Radzen!"}))" />
+<RadzenButton Text="Click me" Click="@NotifycrementCount" />
 
 Welcome to your new app.
+
+@code {
+
+
+    async Task NotifycrementCount()
+    {
+
+        var currentCount = await SecureStorage.GetAsync("currentCount");
+        NotificationService.Notify(new NotificationMessage { Detail = $"Counter {currentCount}" });
+    }
+}
+
